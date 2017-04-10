@@ -1,3 +1,5 @@
+# Crawler-Package
+
 In your virtual env do:
 
 pip install -r requirements.txt
@@ -15,4 +17,3 @@ jupyter notebook Crawler.ipynb
 
 Once you recovered your data saved in data repository you can run the notebook analysis (select the kernel you created):
 jupyter notebook Crawler_Analysis.ipynb
-# Crawler-Package
