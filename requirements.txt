@@ -1,0 +1,8 @@
+# Crawler requirements
+
+pip>=9
+lxml
+urlopen
+setuptools>=26
+wheel>=0.29
+pandas

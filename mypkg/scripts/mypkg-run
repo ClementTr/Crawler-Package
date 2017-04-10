@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Import from the standard library
+from os.path import split
+import argparse
+import pandas as pd
+
+# Import from mypkg
+import mypkg
+from mypkg.lib import clean_data
+from mypkg.scale import scalefunc
+
+
+
+if __name__ == '__main__':
+    usage = '%(prog)s'
+    description = 'My Python package'
+
+    parser = argparse.ArgumentParser(description=description, usage=usage)
+    args = parser.parse_args()
+    # print('args: ', args)
+    folder_source, _ = split(mypkg.__file__)
+    df = pd.read_csv('{}/data/mon_csv_lingerie.csv'.format(folder_source))
+    print('  mypkg/data/mon_csv_lingerie.csv Loaded')
+
+    res = clean_data(df)
+    print('==> out.csv MADE ')
+    print('    shape is {}'.format(res.shape))
+
+    mytab = [0,5,10,15,20]
+    myvalue = ["gift", "not expensive", "respectable", "expensive", "scam"]
+    new_df = scalefunc(res, res.price, "scale", mytab, myvalue)
+    print('    shape is {}'.format(new_df.shape))
+    print('New dataframe:\n', new_df.head())
